@@ -1,0 +1,16 @@
+version: "3.8" # file version
+services:
+  powercis:
+    image: mysql:8.0
+    container_name: springjpadb
+    ports:
+      - "3309:3306"
+    environment: # -e option
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: springjpadb
+      TZ: 'Asia/Tokyo'
+    command: # Exec Command
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ~/springjpadb/volume:/var/lib/mysql # -v option

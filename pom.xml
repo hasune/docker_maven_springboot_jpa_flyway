@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.hasune</groupId>
+    <artifactId>springjpa</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springjpa</name>
+    <description>springjpa</description>
+    <properties>
+        <java.version>17</java.version>
+        <mysql.version>8.0.29</mysql.version>
+        <flyway.version>8.5.4</flyway.version>
+        <spring.jdbc.version>5.3.17</spring.jdbc.version>
+        <swagger.version>1.6.6</swagger.version>
+        <spring.openapi.version>1.6.6</spring.openapi.version>
+        <modelmapper.version>2.4.4</modelmapper.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- MySQL Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- Spring JDBC (Flyway에서 사용함) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.jdbc.version}</version>
+        </dependency>
+
+        <!-- Flyway -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+
+        <!-- Flyway MySQL -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>${swagger.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- 스프링 오픈API -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${spring.openapi.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Spring Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- modelMapper -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--  플러그인쪽에 넣어줘야 터미널에서 flyway 커맨드 실행 가능함. 포트와 db네임 확인-->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3309/springjpadb</url>
+                    <user>root</user>
+                    <password>password</password>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
