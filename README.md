@@ -29,3 +29,13 @@ http://localhost:8080/swagger-ui/index.html#/
 ```git
 http://localhost:8080/v3/api-docs
 ```
+
+### 버전 정보  
+- Java : 17
+- SpringBoot : 2.7.3
+- Mysql : 8.0.29
+- Flyway : 8.5.4
+- Spring JDBC : 5.3.17
+- Swagger : 1.6.6
+- Spring-Doc-OpenAPI : 1.6.6
+- ModelMapper : 2.4.4
