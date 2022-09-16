@@ -5,10 +5,13 @@ docker+메이븐+스프링부트+jpa+flyway+swagger+SpringDoc조합으로 간단
 ```git
 docker-compose up -d
 ```
-
-### DB name / Port
 - dbname : springjpadb
 - port : 3309
+
+### Terminal에서 Maven으로 기동  
+```git
+mvn clean spring-boot:run
+```
 
 ### 터미널에서 Maven flyway마이그레이션
 ```git
